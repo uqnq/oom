@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ooM - Eksplorasi Aura, Cakra & Energi Spiritual</title>
+    <style>
+        /* Reset dan gaya dasar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #8A2BE2;
+            --secondary: #4B0082;
+            --accent: #FFD700;
+            --light: #F5F5F5;
+            --dark: #2C2C54;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            margin-right: 10px;
+            position: relative;
+            animation: pulse 3s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: var(--gradient);
+            color: white;
+            padding: 4rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-img {
+            height: 200px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        /* Chakras Section */
+        .chakras {
+            background-color: #f9f7ff;
+            padding: 3rem 1rem;
+        }
+        
+        .chakra-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .chakra-item {
+            display: flex;
+            margin-bottom: 2rem;
+            align-items: center;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .chakra-color {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .chakra-info {
+            padding: 1rem;
+            flex: 1;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 1rem 1rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--secondary);
+                padding: 1rem;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .chakra-item {
+                flex-direction: column;
+            }
+            
+            .chakra-color {
+                width: 100%;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-circle"></div>
+                ooM
+            </div>
+            <div class="menu-toggle">☰</div>
+            <nav>
+                <ul>
+                    <li><a href="#">Beranda</a></li>
+                    <li><a href="#">Aura</a></li>
+                    <li><a href="#">Cakra</a></li>
+                    <li><a href="#">Meditasi</a></li>
+                    <li><a href="#">Artikel</a></li>
+                    <li><a href="#">Tentang Kami</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Temukan Energi Spiritual dalam Diri Anda</h1>
+            <p>Jelajahi dunia aura, cakra, dan energi kehidupan dengan panduan lengkap untuk mencapai keseimbangan dan harmoni batin.</p>
+            <a href="#" class="cta-button">Mulai Perjalanan Spiritual</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <section class="intro">
+            <h2 class="section-title">Selamat Datang di ooM</h2>
+            <p>ooM adalah portal spiritual yang mengajak Anda untuk menjelajahi dan memahami energi kehidupan yang mengelilingi dan berada dalam diri setiap manusia. Melalui pemahaman tentang aura, cakra, dan berbagai aspek energi spiritual lainnya, kita dapat mencapai keseimbangan hidup yang lebih baik, meningkatkan kesejahteraan fisik dan mental, serta membuka potensi terpendam dalam diri.</p>
+            
+            <p>Di sini, Anda akan menemukan berbagai panduan, artikel, dan sumber daya untuk membantu perjalanan spiritual Anda. Baik Anda baru memulai eksplorasi dunia energi atau sudah memiliki pengalaman, ooM hadir sebagai teman setia dalam perjalanan menuju kesadaran yang lebih tinggi.</p>
+        </section>
+
+        <section class="content-grid">
+            <div class="card">
+                <div class="card-img">🌀</div>
+                <div class="card-content">
+                    <h3>Memahami Aura</h3>
+                    <p>Aura adalah medan energi yang mengelilingi setiap makhluk hidup. Pelajari bagaimana warna dan intensitas aura dapat mencerminkan keadaan fisik, emosi, dan spiritual seseorang, serta bagaimana Anda dapat membersihkan dan memperkuat aura Anda untuk kehidupan yang lebih seimbang.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-img">⚡</div>
+                <div class="card-content">
+                    <h3>7 Cakra Utama</h3>
+                    <p>Tubuh manusia memiliki tujuh pusat energi utama yang disebut cakra. Setiap cakra berkaitan dengan aspek fisik, emosional, dan spiritual tertentu. Temukan cara membuka, menyeimbangkan, dan membersihkan cakra-cakra ini untuk meningkatkan aliran energi dalam tubuh.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-img">🌿</div>
+                <div class="card-content">
+                    <h3>Penyembuhan Energi</h3>
+                    <p>Penyembuhan energi adalah praktik menggunakan energi universal untuk memulihkan keseimbangan dan kesehatan. Jelajahi berbagai teknik seperti Reiki, penyembuhan prana, dan terapi kristal yang dapat membantu menyelaraskan energi tubuh dan pikiran.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="chakras">
+            <h2 class="section-title">Mengenal 7 Cakra Utama</h2>
+            <div class="chakra-list">
+                <div class="chakra-item">
+                    <div class="chakra-color" style="background-color: #FF0000;">1</div>
+                    <div class="chakra-info">
+                        <h3>Cakra Mahkota (Sahasrara)</h3>
+                        <p>Terletak di mahkota kepala, cakra ini menghubungkan kita dengan kesadaran kosmik dan spiritualitas. Warna: Ungu.</p>
+                    </div>
+                </div>
+                
+                <div class="chakra-item">
+                    <div class="chakra-color" style="background-color: #FF7F00;">2</div>
+                    <div class="chakra-info">
+                        <h3>Cakra Ajna (Mata Ketiga)</h3>
+                        <p>Terletak di antara alis, cakra ini berkaitan dengan intuisi, kebijaksanaan, dan persepsi spiritual. Warna: Indigo.</p>
+                    </div>
+                </div>
+                
+                <div class="chakra-item">
+                    <div class="chakra-color" style="background-color: #FFFF00;">3</div>
+                    <div class="chakra-info">
+                        <h3>Cakra Vishuddha (Tenggorokan)</h3>
+                        <p>Terletak di tenggorokan, cakra ini mengatur komunikasi, ekspresi diri, dan kebenaran. Warna: Biru.</p>
+                    </div>
+                </div>
+                
+                <div class="chakra-item">
+                    <div class="chakra-color" style="background-color: #00FF00;">4</div>
+                    <div class="chakra-info">
+                        <h3>Cakra Anahata (Jantung)</h3>
+                        <p>Terletak di dada, cakra ini adalah pusat cinta, kasih sayang, dan pengampunan. Warna: Hijau.</p>
+                    </div>
+                </div>
+                
+                <div class="chakra-item">
+                    <div class="chakra-color" style="background-color: #0000FF;">5</div>
+                    <div class="chakra-info">
+                        <h3>Cakra Manipura (Pusar)</h3>
+                        <p>Terletak di area pusar, cakra ini berkaitan dengan kekuatan pribadi, kepercayaan diri, dan kemauan. Warna: Kuning.</p>
+                    </div>
+                </div>
+                
+                <div class="chakra-item">
+                    <div class="chakra-color" style="background-color: #4B0082;">6</div>
+                    <div class="chakra-info">
+                        <h3>Cakra Svadhisthana (Sakral)</h3>
+                        <p>Terletak di bawah pusar, cakra ini mengatur kreativitas, sensualitas, dan emosi. Warna: Oranye.</p>
+                    </div>
+                </div>
+                
+                <div class="chakra-item">
+                    <div class="chakra-color" style="background-color: #8B0000;">7</div>
+                    <div class="chakra-info">
+                        <h3>Cakra Muladhara (Akar)</h3>
+                        <p>Terletak di dasar tulang belakang, cakra ini berkaitan dengan kelangsungan hidup, stabilitas, dan keamanan. Warna: Merah.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Tentang ooM</h3>
+                <p>ooM adalah platform spiritual yang menyediakan informasi dan panduan tentang aura, cakra, meditasi, dan energi kehidupan untuk membantu Anda mencapai keseimbangan batin.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Navigasi</h3>
+                <ul>
+                    <li><a href="#">Beranda</a></li>
+                    <li><a href="#">Aura</a></li>
+                    <li><a href="#">Cakra</a></li>
+                    <li><a href="#">Meditasi</a></li>
+                    <li><a href="#">Artikel</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Kontak</h3>
+                <ul>
+                    <li>Email: info@oom.com</li>
+                    <li>Telepon: +62 123 4567 890</li>
+                    <li>Alamat: Jl. Spiritual No. 123, Kota Harmoni</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 ooM - Energi Spiritual. Semua Hak Dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle menu untuk mobile
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('show');
+        });
+    </script>
+</body>
+</html>
